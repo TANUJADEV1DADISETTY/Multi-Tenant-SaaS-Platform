@@ -1,0 +1,785 @@
+{
+	"info": {
+		"_postman_id": "aee4e254-d5fb-42a9-b3dd-ac84bee364a6",
+		"name": "Multi-Tenant-Saas-Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50501699",
+		"_collection_link": "https://tanujadevi99-3441869.postman.co/workspace/Tanuja-Devi's-Workspace~05135408-b117-495b-87ba-15e962e19522/collection/50501699-aee4e254-d5fb-42a9-b3dd-ac84bee364a6?action=share&source=collection_link&creator=50501699"
+	},
+	"item": [
+		{
+			"name": "Register_Tenant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tenantName\": \"Demo Company\",\r\n  \"subdomain\": \"demo\",\r\n  \"adminEmail\": \"admin@demo.com\",\r\n  \"adminPassword\": \"Demo@123\",\r\n  \"adminFullName\": \"Demo Admin\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register-tenant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register-tenant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin@demo.com\",\r\n  \"password\": \"Demo@123\",\r\n  \"tenantSubdomain\": \"demo\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_current_user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxN2YyODAxNC0zMzE5LTQ4NDAtOGI2MS0wNjkzOThjNDU4ZDIiLCJ0ZW5hbnRJZCI6ImVhYThiZDIwLTYwZTQtNGFjNC04MGMwLTgxOTJmYTRmMmI4NCIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NDQyNDMsImV4cCI6MTc2NjgzMDY0M30.MjsO4PoqA4BmI79ywBrN6Ec0ZYgWYDQCg6ubCl87WGI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxN2YyODAxNC0zMzE5LTQ4NDAtOGI2MS0wNjkzOThjNDU4ZDIiLCJ0ZW5hbnRJZCI6ImVhYThiZDIwLTYwZTQtNGFjNC04MGMwLTgxOTJmYTRmMmI4NCIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NDQyNDMsImV4cCI6MTc2NjgzMDY0M30.MjsO4PoqA4BmI79ywBrN6Ec0ZYgWYDQCg6ubCl87WGI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_tenant_details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIxNzMsImV4cCI6MTc2Njg0ODU3M30.77BTMv_Hku_exa9F9F5K7TZd9nWJ0kof0vqde0UTrvQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/tenants/24468668-cfc1-4e05-8331-112573ae4986",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tenants",
+						"24468668-cfc1-4e05-8331-112573ae4986"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_tenant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated Demo Company\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/tenants/24468668-cfc1-4e05-8331-112573ae4986",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tenants",
+						"24468668-cfc1-4e05-8331-112573ae4986"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "super_Admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OTFkYzg3Ni03NTJmLTQxOTYtYTM4Mi04YWRkMjk3MzdhYTEiLCJ0ZW5hbnRJZCI6bnVsbCwicm9sZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzY2NzYyNzY2LCJleHAiOjE3NjY4NDkxNjZ9.wx93d3YDr5OCRRNPfppudsZrc1xk7OM9cgMaWqL3aSE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"superadmin@system.com\",\r\n  \"password\": \"Admin@123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_tenents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OTFkYzg3Ni03NTJmLTQxOTYtYTM4Mi04YWRkMjk3MzdhYTEiLCJ0ZW5hbnRJZCI6bnVsbCwicm9sZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzY2NzYyNzY2LCJleHAiOjE3NjY4NDkxNjZ9.wx93d3YDr5OCRRNPfppudsZrc1xk7OM9cgMaWqL3aSE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/tenants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_user_to_tenent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"user1@demo.com\",\r\n  \"password\": \"User@123\",\r\n  \"fullName\": \"Demo User One\",\r\n  \"role\": \"user\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/tenants/24468668-cfc1-4e05-8331-112573ae4986/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tenants",
+						"24468668-cfc1-4e05-8331-112573ae4986",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_all_users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/tenants/24468668-cfc1-4e05-8331-112573ae4986/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tenants",
+						"24468668-cfc1-4e05-8331-112573ae4986",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Updated Demo User\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/44aede3a-37c0-40e4-8ec0-6961ef0f7a9f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"44aede3a-37c0-40e4-8ec0-6961ef0f7a9f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/users/44aede3a-37c0-40e4-8ec0-6961ef0f7a9f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"44aede3a-37c0-40e4-8ec0-6961ef0f7a9f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Project Alpha\",\r\n  \"description\": \"First demo project\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_projects",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated Project Alpha\",\r\n  \"description\": \"Updated project description\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/projects/a741b56c-2cc8-4a38-a325-0f62c79cfd00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects",
+						"a741b56c-2cc8-4a38-a325-0f62c79cfd00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmMDM0YjBkZC1lM2E5LTRiNGQtOGRmZS0wYjYzZmM0Zjk0MDkiLCJ0ZW5hbnRJZCI6IjI0NDY4NjY4LWNmYzEtNGUwNS04MzMxLTExMjU3M2FlNDk4NiIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3NjIzNjEsImV4cCI6MTc2Njg0ODc2MX0.w-r21k6bOR2tNEv82kcDudSZ6MxOZFkOt4xCer7MeLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/projects/a741b56c-2cc8-4a38-a325-0f62c79cfd00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects",
+						"a741b56c-2cc8-4a38-a325-0f62c79cfd00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZmQxODg0YS0wMzZjLTRmYWQtODJmOC1mY2FjMzcxOWZmMzciLCJ0ZW5hbnRJZCI6IjRkYWQwMjUyLTJkYTgtNDNhYy1iODdhLWRmODAzODY5NDcwYyIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3Njk1NzAsImV4cCI6MTc2Njg1NTk3MH0.sbmHHVtFl01_4WEXr_W3-daWXOb-Dc3rUV9Fra1l7X8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Design homepage mockup\",\r\n  \"description\": \"Create UI design for homepage\",\r\n  \"priority\": \"high\",\r\n  \"assignedTo\": \"USER_ID_OPTIONAL\",\r\n  \"dueDate\": \"2025-01-15\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/projects/632ce898-e253-45c9-a46a-16586187cb49/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects",
+						"632ce898-e253-45c9-a46a-16586187cb49",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all_project_tasks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZmQxODg0YS0wMzZjLTRmYWQtODJmOC1mY2FjMzcxOWZmMzciLCJ0ZW5hbnRJZCI6IjRkYWQwMjUyLTJkYTgtNDNhYy1iODdhLWRmODAzODY5NDcwYyIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3Njk1NzAsImV4cCI6MTc2Njg1NTk3MH0.sbmHHVtFl01_4WEXr_W3-daWXOb-Dc3rUV9Fra1l7X8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Design homepage mockup\",\r\n  \"description\": \"Create UI design for homepage\",\r\n  \"priority\": \"high\",\r\n  \"assignedTo\": \"USER_ID_OPTIONAL\",\r\n  \"dueDate\": \"2025-01-15\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/projects/632ce898-e253-45c9-a46a-16586187cb49/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects",
+						"632ce898-e253-45c9-a46a-16586187cb49",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_task_status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZmQxODg0YS0wMzZjLTRmYWQtODJmOC1mY2FjMzcxOWZmMzciLCJ0ZW5hbnRJZCI6IjRkYWQwMjUyLTJkYTgtNDNhYy1iODdhLWRmODAzODY5NDcwYyIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3Njk1NzAsImV4cCI6MTc2Njg1NTk3MH0.sbmHHVtFl01_4WEXr_W3-daWXOb-Dc3rUV9Fra1l7X8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": \"completed\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/1737170b-5316-47dd-b4e2-6d4cc4bbe467/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"1737170b-5316-47dd-b4e2-6d4cc4bbe467",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZmQxODg0YS0wMzZjLTRmYWQtODJmOC1mY2FjMzcxOWZmMzciLCJ0ZW5hbnRJZCI6IjRkYWQwMjUyLTJkYTgtNDNhYy1iODdhLWRmODAzODY5NDcwYyIsInJvbGUiOiJ0ZW5hbnRfYWRtaW4iLCJpYXQiOjE3NjY3Njk1NzAsImV4cCI6MTc2Njg1NTk3MH0.sbmHHVtFl01_4WEXr_W3-daWXOb-Dc3rUV9Fra1l7X8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Updated task title\",\r\n  \"description\": \"Updated description\",\r\n  \"status\": \"in_progress\",\r\n  \"priority\": \"high\",\r\n  \"assignedTo\": null,\r\n  \"dueDate\": \"2025-02-01\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/1737170b-5316-47dd-b4e2-6d4cc4bbe467",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"1737170b-5316-47dd-b4e2-6d4cc4bbe467"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

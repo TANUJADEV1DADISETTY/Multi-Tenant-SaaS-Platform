@@ -19,13 +19,13 @@ The project is organized into backend, frontend, and documentation folders to ma
 ### 2.1 Backend Project Structure
 
 backend/
-├── src/
-│ ├── controllers/
-│ ├── models/
-│ ├── routes/
-│ ├── middleware/
-│ ├── utils/
-│ └── config/
+|
+│── controllers/
+│── models/
+│── routes/
+│── middleware/
+│── utils/
+│── config/
 ├── migrations/
 └── tests/
 
